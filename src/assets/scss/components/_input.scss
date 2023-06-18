@@ -1,0 +1,119 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixin' as *;
+
+.input-box {
+    display: flex;
+
+    &.search {
+        position: relative;
+
+        input {
+            padding: 1rem 2rem;
+            border: 0;
+            border-bottom: 1px solid $black-21;
+            @include response($tablet-l) {
+                padding: 1rem 2rem;
+            }
+
+            &:focus + i {
+                color: $yellowgreen;
+            }
+        }
+
+        i {
+            position: absolute;
+            top: calc(50% - 0.75rem);
+            left: 0;
+            color: $gray-66;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+    }
+
+    input {
+        width: 100%;
+        padding: 1.5rem 0;
+        font-size: 1.125rem;
+        outline: 0;
+        transition: all 0.3s;
+        @include response($tablet-l) {
+            padding: 10px 0;
+            font-size: 1rem;
+        }
+
+        &:focus {
+            border-color: $yellowgreen;
+
+            &::placeholder {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+
+    input[type="checkbox"] + label {
+        display: inline-block;
+        position: relative;
+        width: 18px;
+        height: 18px;
+        background: $white;
+        color: $gray-66;
+        font-size: 0.9rem;
+        line-height: 14px;
+        text-indent: 24px;
+        border: 1px solid $gray-66;
+        white-space: nowrap;
+        transition: all 0.1s;
+        cursor: pointer;
+    
+        &::after {
+            content: '';
+            position: absolute;
+            top: calc(50% - 9px);
+            left: calc(50% - 5px);
+            width: 10px;
+            height: 14px;
+            border: solid $black-21;
+            border-width: 0 3px 3px 0;
+            border-radius: 3px;
+            transform-origin: 50%;
+            transform: rotate(45deg) scale(0);
+            transition: all 0.1s;
+        }
+    }
+    
+    input[type="checkbox"]:checked+label {
+
+        &::after {
+            transform: rotate(45deg) scale(1);
+            animation: aniChecked .2s;
+    
+            @keyframes aniChecked {
+                0% {
+                    transform: rotate(45deg) scale(0);
+                }
+    
+                80% {
+                    transform: rotate(45deg) scale(1.25);
+                }
+    
+                100% {
+                    transform: rotate(45deg) scale(1);
+                }
+            }
+        }
+    }
+    
+    input[type="checkbox"] {
+        display: none;
+    }
+    
+    input:disabled + label {
+        background: $gray-c4;
+        cursor: default;
+    }
+}

@@ -1,0 +1,234 @@
+@use './variables' as *;
+
+// 웹 접근성을 고려하여 텍스트 숨기기
+@mixin blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+// 텍스트 말줄임표 처리
+@mixin ellipsis($line) {
+    @if ($line == 0) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        -webkit-line-clamp: $line;
+        -webkit-box-orient: vertical;
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+// 수직중앙정렬 
+@mixin verticalCenter {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+// inner
+@mixin inner {
+    width: calc(75vw + 80px);
+    margin: 0 auto;
+    @include response($tablet-l) {
+        width: 100%;
+    }
+}
+
+// title
+@mixin sectionTitle {
+    font-size: 2.625rem;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+// container style
+@mixin containerStyle ($width) {
+    display: flex;
+    justify-content: space-between;
+
+    // 너비가 50%일경우와 아닐경우
+    @if ($width == 50%) {
+        .left-box, .right-box {
+            width: calc($width - 10px);
+        }
+    } @else {
+        .left-box {
+            width: calc($width - 20px);
+            margin-right: 20px;
+        }
+
+        .right-box {
+            width: calc(100% - $width);
+        }
+    }
+}
+
+// select-type type component
+@mixin type {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 0 5px;
+
+    &__item {
+        margin: 0 10px 10px 0;
+
+        button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 64px;
+            width: auto;
+            height: 2.625rem;
+            padding: 0 20px;
+            color: $gray-c4;
+            border: 1px solid $gray-c4;
+            border-radius: 1.3125rem;
+            transition: all 0.3s;
+
+            &:hover:not([class^="refresh-btn"]) {
+                color: $yellowgreen;
+                border-color: $yellowgreen;
+            }
+
+            &.on:not([class^="refresh-btn"]) {
+                background: $yellowgreen;
+                color: $white;
+                border-color: $yellowgreen;
+            }
+
+            &.refresh-btn {
+                background: $green;
+                color: $white;
+                border-color: $green;
+
+                svg path {
+                    fill: $white;
+                }
+            }
+        }
+    }
+}
+
+// line Animation
+@mixin lineAnimation ($scale:0){
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+
+    @if ($scale != 0) {
+        overflow: hidden;
+        
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: $black-21;
+            transform: translateY(2px);
+            transition: transform 0.3s ease-out;
+        }
+
+        &:hover, &.on {
+            color: $black-21;
+
+            &::before {
+                transform: translateY(0);
+            }
+        }
+    } @else {
+
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: $black-21;
+            transform: scaleX(0);
+            transform-origin: right center;
+            transition: transform .4s;
+        }
+
+        &:hover, &.on {
+            color: $black-21;
+
+            &::before {
+                transform: scale(1);
+                transform-origin: left center;
+            }
+        }
+    }
+}
+
+// 버튼너비
+@mixin btnSize {
+    
+    &.small {
+        width: auto;
+    }
+
+    &.medium {
+        width: calc(50% - 5px);
+        margin: 0 5px;
+    }
+
+    &.half {
+        width: calc(50% - 5px);
+    }
+
+    &.large {
+        width: 100%;
+    }
+}
+
+// 버튼타입 분기처리
+@mixin btnStyle($size, $radius: 0) {
+    min-width: 0;
+    width: $size !important;
+    height: $size !important;
+    padding: 0;
+   
+    @if $radius != 0 {
+        border-radius: $radius;
+    }
+}
+
+// 반응형
+@mixin response($breakpoint) {
+    @if ($breakpoint == $desktop) {
+        @media screen and (max-width: $desktop) {
+            @content;
+        }
+    } @else if ($breakpoint == $laptap) {
+        @media screen and (max-width: $laptap) {
+            @content;
+        }
+    } @else if ($breakpoint == $tablet-l) {
+        @media screen and (max-width: $tablet-l) {
+            @content;
+        }
+    } @else if ($breakpoint == $tablet-s) {
+        @media screen and (max-width: $tablet-s) {
+            @content;
+        }
+    } @else if ($breakpoint == $mobile) {
+        @media screen and (max-width: $mobile) {
+            @content;
+        }
+    }
+}

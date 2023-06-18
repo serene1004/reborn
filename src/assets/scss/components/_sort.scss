@@ -1,0 +1,52 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixin' as *;
+
+.search-data {
+    @include verticalCenter;
+    justify-content: space-between;
+    
+    em {
+        font-weight: bold;
+        
+        span {
+            margin-left: 0.2em;
+        }
+    }
+}
+
+.search-sort {
+    @include verticalCenter;
+
+    &__item {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        &:first-child:before {
+            display: none;
+        }
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 1px;
+            height: 1rem;
+            margin: 0 10px;
+            background: $gray-66;
+        }
+    }
+
+    .sort-btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        color : $gray-66;
+        font-weight: bold;
+
+        &.on {
+            color: $black-21;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{% macro active(currentPage = '') %}
+<header class="header">
+    <div class="header__inner">
+        <h1 class="header__logo">
+            <a href="index.html" class="header__link"><span class="blind">reborn logo</span></a>
+        </h1>
+        <nav class="header__nav">
+            <a href="method.html" class="header__nav__link {% if currentPage == 'method' %}on{% endif %}">분리수거방법<i class='bx bx-search'></i></a>
+            <a href="info.html" class="header__nav__link {% if currentPage == 'info' %}on{% endif %}">소개</a>
+            <a href="notice.html" class="header__nav__link {% if currentPage == 'notice' %}on{% endif %}">공지사항</a>
+        </nav>
+    </div>
+</header>
+{% endmacro %}

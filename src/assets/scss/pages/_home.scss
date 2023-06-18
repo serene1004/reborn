@@ -1,0 +1,263 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixin' as *;
+
+// main visual page
+.home {
+    height: calc(100vh - 85px);
+
+    &__inner {
+        @include inner;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 0 60px;
+    }
+}
+
+.visual {
+    width: 660px;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: .4s;
+    @include response($laptap) {
+        width: 420px;
+        margin: 0;
+    }
+
+    &.on {
+        transform: translateX(-50%);
+    }
+
+    &__title {
+        margin-bottom: 2em;
+        color: $yellowgreen;
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        @include response($laptap) {
+            margin-bottom: 1em;
+        }
+        @include response($tablet-l) {
+            font-size: 1.35rem;
+        }
+    }
+
+    &__input-box {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        font-size: 6rem;
+        font-weight: bold;
+        @include response($laptap) {
+            font-size: 5rem;
+        }
+        @include response($tablet-l) {
+            font-size: 4rem;
+        }
+
+        &__typing {
+            color: $gray-99;
+            font-weight: bold;
+            border-bottom: 4px solid $gray-99;
+
+            .ti-cursor {
+                color: $yellowgreen;
+                font-size: inherit;
+            }
+        }
+        
+        &__input {
+            display: none;
+            max-width: 584px;
+            min-width: 6rem;
+            width: 6rem;
+            border: 0;
+            border-bottom: 4px solid $gray-99;
+            color: $gray-99;
+            line-height: 1rem;
+            @include response($laptap) {
+                max-width: 420px;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            &.on {
+                border: 0;
+                color: $yellowgreen;
+            }
+        }
+    }
+
+    &__text-box {
+        font-size: 6rem;
+        font-weight: bold;
+        @include response($laptap) {
+            font-size: 5rem;
+        }
+        @include response($tablet-l) {
+            font-size: 4rem;
+        }
+
+        &__txt01, &__txt02 {
+            transition: all 0.4s ease-out;
+        }
+
+        &__txt01.on {
+            display: none;
+        }
+
+        &__txt02 {
+            display: none;
+
+            &.on {
+                display: block;
+            }
+        }
+    }
+
+    .btn-view {
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-20rem);
+        transition: 0.4s ease-out;
+
+        &.on {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0px);
+        }
+
+        &:hover {
+            color: $yellowgreen;
+        }
+    }
+}
+
+.visual-layer {
+    width: 660px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    font-size: 4rem;
+    opacity: 0;
+    transform: translateY(20rem);
+    transition: all .4s ease-out;
+    visibility: hidden;
+    @include response($laptap) {
+        width: 420px;
+    }
+
+    &.on {
+        bottom: calc(50% - 200px);
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+    }
+
+    &__title {
+        padding: 0.5em 0;
+        font-size: 4rem;
+        font-weight: bold;
+        border-bottom: 2px dashed $gray-99;
+
+        em {
+            color: $yellowgreen;
+        }
+    }
+
+    &__sub-title {
+        color: $gray-99;
+        font-size: 1.2rem;
+        margin-bottom: 0.5em;
+    }
+
+    .list {
+        padding: 0.5em 0;
+        font-size: 4rem;
+
+        &__item {
+            margin-left: 1.5rem;
+            padding-bottom: 0.5em;
+            color: $gray-66;
+            font-size: 1.5rem;
+            list-style: initial;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    .itembox {
+        display: flex;
+
+        &__item {
+            margin-right: 8px;
+        }
+
+        &__link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 60px;
+            padding: 12px 20px;
+            border: 1px solid $gray-99;
+            border-radius: 2rem;
+            color: $gray-99;
+            font-size: 0.9rem;
+            transition: all .4s ease-out;
+
+            &:hover {
+                border-color: $yellowgreen;
+                color: $yellowgreen;
+            }
+        }
+    }
+
+    &__logo {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0.5em;
+        right: 0;
+        width: 96px;
+        height: 84px;
+        background: url(../images/recycle.png) no-repeat;
+        background-size: cover;
+        @include response($laptap) {
+            width: 64px;
+            height: 56px;
+        }
+    }
+
+    .btn-undo {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -1.5em;
+        right: -1em;
+        width: 4rem;
+        height: 4rem;
+        color: $gray-99;
+        font-size: 4rem;
+        transition: all 0.4s ease-out;
+        @include response($laptap) {
+            top: -0.5em;
+            width: 3rem;
+            height: 3rem;
+            color: $gray-99;
+            font-size: 3rem;
+        }
+
+        &:hover {
+            color: $black-21;
+        }
+    }
+}

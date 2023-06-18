@@ -1,0 +1,89 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixin' as *;
+
+// card를 감싸는 박스
+.card-container {
+    padding-bottom: 120px;
+    @include response($tablet-l) {
+        padding-bottom: 80px;
+    }
+
+    .btn-more {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 60px;
+        margin: 0 30px;
+        background: #F8F8F8;
+        font-weight: bold;
+        @include response($tablet-l) {
+            width: calc(100% - 40px);
+            margin: 0 auto;
+        }
+    }
+}
+
+// card
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 60px 0;
+    @include response($tablet-l) {
+        margin: 40px 0;
+    }
+
+    &__item {
+        width: 20%;
+        margin-bottom: 30px;
+        padding: 0 30px;
+        @include response($laptap) {
+            width: 25%;
+        }
+        @include response($tablet-l) {
+            width: 33.33333%;
+        }
+        @include response($tablet-s) {
+            width: 50%;
+            padding: 0 20px;
+        }
+    }
+
+    &__link {
+        display: block;
+        width: 100%;
+
+        &:hover {
+            .card__title {
+                color: $yellowgreen;
+                font-weight: bold;
+            }
+
+            .card__img {
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+
+                img {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+
+    &__img {
+        width: 100%;
+        transition: box-shadow 0.3s;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+    }
+
+    &__title {
+        margin-top: 5px;
+        transition: all 0.3s;
+    }
+}

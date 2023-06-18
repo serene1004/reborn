@@ -1,0 +1,59 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixin' as *;
+
+// sub method
+.method {
+    margin-top: 85px;
+
+    &__inner {
+        @include inner;
+        width: calc(75vw + 140px);
+        @include response($tablet-s) {
+            width: 100%;
+        }
+    }
+
+    &__title {
+        @include sectionTitle;
+        padding: 0 30px;
+        @include response($tablet-s) {
+            padding: 0 20px;
+        }
+    }
+
+    .select-type {
+        margin-bottom: 60px;
+        padding: 0 30px;
+        @include response($laptap) {
+            margin-bottom: 40px;
+        }
+        @include response($tablet-l) {
+            margin-bottom: 20px;
+        }
+        @include response($tablet-s) {
+            padding: 0 20px;
+        }
+    }
+
+    .input-box.search {
+        padding: 0 30px;
+        @include response($tablet-s) {
+            padding: 0 20px;
+        }
+
+        i {
+            left: 30px;
+            @include response($tablet-s) {
+                left: 20px;
+            }
+        }
+    }
+
+    .search-data {
+        margin-top: 10px;
+        padding: 0 30px;
+        @include response($tablet-s) {
+            padding: 0 20px;
+        }
+    }
+}

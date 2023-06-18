@@ -1,0 +1,78 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixin' as *;
+
+.select-box {
+    position: relative;
+    width: 100%;
+    height: 36px;
+
+    select {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        padding: 0 10px;
+        background: transparent;
+        font-size: 1rem;
+        color: $gray-66;
+        border: 1px solid $gray-66;
+        outline: 0;
+        transition: border .2s ease-out;
+        appearance: none;
+    }
+
+    .arrow {
+        display: inline-block;
+        position: absolute;
+        z-index: 1;
+        top: calc(50% - 10px);
+        right: 10px;
+        width: 20px;
+        height: 20px;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 2px;
+            margin-top: -1px;
+            margin-left: -8px;
+            background: $gray-66;
+            transform: rotate(45deg);
+            transition: all .2s ease-out;
+        }
+        &::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%; 
+            width: 10px;
+            height: 2px;
+            margin-top: -1px;
+            margin-left: -2px;
+            background: $gray-66;
+            transform: rotate(-45deg);
+            transition: all .2s ease-out;
+        }
+    }
+    select:focus {
+        border-color: $yellowgreen;
+        color: $yellowgreen;
+
+        option {
+            color: $black-21;
+        }
+    }
+    select:focus + .arrow::before {
+        background-color: $yellowgreen;
+        transform: rotate(-45deg);
+    }
+    select:focus + .arrow::after {
+        background-color: $yellowgreen;
+        transform: rotate(45deg);
+    }
+}

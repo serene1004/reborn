@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block content %}
+    {% import '../templates/header.html' as nav %} {{nav.active('notice')}}
+    <main class="main">
+        <section class="notice">
+            <h3 class="title">notice</h3>
+        </section>
+    </main>
+    {% include "footer.html" %}
+{% endblock %}

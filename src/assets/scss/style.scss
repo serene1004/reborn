@@ -1,0 +1,58 @@
+@use './helpers/reset' as *;
+@use './helpers/variables' as *;
+@use './helpers/mixin' as *;
+
+@use './components/header' as *;
+@use './components/footer' as *;
+@use './components/input' as *;
+@use './components/select' as *;
+@use './components/type' as *;
+@use './components/card' as *;
+@use './components/sort' as *;
+
+@use './pages/home' as *;
+@use './pages/method' as *;
+@use './pages/detail' as *;
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+::selection {background: $gray-66;color: $white;}
+::-webkit-scrollbar {width: 8px;}
+::-webkit-scrollbar-track {background: $gray-c4;}
+::-webkit-scrollbar-thumb {background: $gray-66;border-radius: 4px;}
+
+button:active {opacity: 0.7;}
+
+.blind {
+    @include blind;
+}
+
+.ellipsis {
+    @include ellipsis(0);
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    color: $black-21;
+}
+
+.main {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    &__title {
+        padding-bottom: 1em;
+        font-size: 2.625rem;
+        line-height: 1.5;
+    }
+}
+
+// response
+@include response($laptap) {
+    html {font-size: 14px;}
+}
+@include response($tablet-l) {
+    ::-webkit-scrollbar {display: none;}
+}

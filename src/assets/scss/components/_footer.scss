@@ -1,0 +1,170 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixin' as *;
+
+.footer {
+    position: relative;
+    padding: 80px 0;
+    background: $black-21;
+    color: $white;
+    overflow: hidden;
+    @include response($tablet-l) {
+        padding: 60px 30px;
+    }
+    @include response($tablet-s) {
+        padding: 60px 20px;
+    }
+
+    &__inner {
+        @include inner;
+    }
+
+    &__top {
+        display: flex;
+        padding-bottom: 56px;
+        @include response($tablet-l) {
+            padding-bottom: 40px;
+        }
+        @include response($tablet-s) {
+            flex-direction: column;
+            padding-bottom: 32px;
+        }
+    }
+
+    &__contactus, &__info {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        @include response($tablet-s) {
+            width: 100%;
+        }
+
+        em {
+            display: inline-block;
+            font-size: 1.625rem;
+            margin-bottom: 50px;
+            @include response($laptap) {
+                font-size: 1.5rem;
+                margin-bottom: 36px;
+            }
+            @include response($tablet-l) {
+                font-size: 1.375rem;
+                margin-bottom: 20px;
+            }
+            @include response($tablet-s) {
+                margin-bottom: 0;
+            }
+        }
+        
+        h3 {
+            font-size: 5.25rem;
+            font-weight: bold;
+            @include response($laptap) {
+                font-size: 4.25rem;
+            }
+            @include response($tablet-l) {
+                font-size: 3.25rem;
+            }
+        }
+
+        .inquiry {
+            margin-top: 72px;
+            color: $gray-99;
+            font-size: 0.9rem;
+            @include response($laptap) {
+                margin-top: 52px;
+            }
+            @include response($tablet-l) {
+                margin-top: 32px;
+            }
+            @include response($tablet-s) {
+                margin: 0;
+                padding-bottom: 32px;
+            }
+            
+            a {
+                margin-left: 40px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-top: 56px;
+        border-top: 2px dashed $gray-c4;
+        @include response($tablet-l) {
+            padding-top: 40px;
+        }
+        @include response($tablet-s) {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-top: 32px;
+        }
+    }
+
+    &__logo {
+        flex-shrink: 0;
+        width: 50%;
+        font-size: 5.25rem;
+        font-weight: bold;
+        @include response($laptap) {
+            font-size: 4.25rem;
+        }
+        @include response($tablet-l) {
+            font-size: 3.25rem;
+        }
+        @include response($tablet-s) {
+            width: 100%;
+        }
+    }
+
+    .copyright {
+        flex-shrink: 1;
+        width: 50%;
+        margin-bottom: 20px;
+        color: $gray-99;
+        font-size: 0.9rem;
+        @include response($tablet-l) {
+            margin-bottom: 12px;
+        }
+        @include response($tablet-s) {
+            width: 100%;
+            margin-bottom: 0;
+        }
+    }
+
+    // footer 커서 효과
+    .cursor {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: $green;
+        opacity: 0;
+        mix-blend-mode: exclusion;
+        transition: opacity 0.3s ease-out;
+        cursor: none;
+
+        @include response($tablet-l) {
+            width: 80px;
+            height: 80px;
+        }
+        @include response($tablet-s) {
+            width: 50px;
+            height: 50px;
+        }        
+
+        &.on {
+            opacity: 1;
+        }
+    }
+}

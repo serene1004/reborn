@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reborn.</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrap">
+    
+    <!-- typeit -->
+    <script src="https://unpkg.com/typeit@8.4.0/dist/index.umd.js"></script>
+     
+<header class="header">
+    <div class="header__inner">
+        <h1 class="header__logo">
+            <a href="index.html" class="header__link"><span class="blind">reborn logo</span></a>
+        </h1>
+        <nav class="header__nav">
+            <a href="method.html" class="header__nav__link ">분리수거방법<i class='bx bx-search'></i></a>
+            <a href="info.html" class="header__nav__link ">소개</a>
+            <a href="notice.html" class="header__nav__link ">공지사항</a>
+        </nav>
+    </div>
+</header>
+
+    <main class="main">
+        <section class="home">
+            <div class="home__inner">
+                <div class="visual">
+                    <h3 class="visual__title">분리수거방법 검색</h3>
+                    <div class="visual__input-box">
+                        <label id="typingAnimation" class="visual__input-box__typing">뽁뽁이</label>
+                        <input type="text" class="visual__input-box__input" maxlength="8" onkeydown="this.style.width = (this.value.length * 5.25) + 'rem';" onkeyup="this.style.width = (this.value.length * 5.25) + 'rem';">
+                    </div>
+                    <div class="visual__text-box">
+                        <span class="visual__text-box__txt01">어떻게 버릴까?</span>
+                        <span class="visual__text-box__txt02">버리는 방법</span>
+                    </div>
+                    <div class="visual__text-box">
+                        <button type="button" class="btn-view">방법보기<i class='bx bx-spreadsheet'></i></button>
+                    </div>
+                </div>
+
+                <div class="visual-layer">
+                    <h3 class="visual-layer__title"><em>플라스틱 류</em> 로<br>버려주세요</h3>
+                    <ul class="list">
+                        <li class="list__item">버리는 방법01</li>
+                        <li class="list__item">버리는 방법02</li>
+                    </ul>
+                    <h4 class="visual-layer__sub-title">함께 배출 가능한 품목</h4>
+                    <ul class="itembox">
+                        <li class="itembox__item"><a href="method.html" class="itembox__link">아이템01</a></li>
+                        <li class="itembox__item"><a href="method.html" class="itembox__link">아이템02</a></li>
+                        <li class="itembox__item"><a href="method.html" class="itembox__link">아이템03</a></li>
+                    </ul>
+                    <i class="visual-layer__logo"><span class="blind">logo</span></i>
+                    <button class="btn-undo"><span class="blind">뒤로가기</span><i class='bx bx-undo'></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./assets/js/visual.js"></script>
+
+    </div>
+</body>
+</html>

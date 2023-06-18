@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+    {% import '../templates/header.html' as nav %} {{nav.active('method')}}
+    <main class="main">
+        <section class="detail">
+            <div class="detail__inner">
+                <h3 class="detail__title">~~~~ 분리수거 방법</h3>
+            </div>
+            <div class="detail-container">
+                <div class="detail-container__img">
+                    <img src="./assets/images/book.png" alt="book">
+                </div>
+            </div>
+        </section>
+    </main>
+    {% include "footer.html" %}
+    <script type="module" src="./assets/js/detail.js"></script>
+{% endblock %}
